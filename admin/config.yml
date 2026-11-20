@@ -2,14 +2,14 @@
 # after the project repository is created. Use a supported Decap backend/auth setup.
 backend:
   name: github
-  repo: YOUR-GITHUB-USERNAME/swsa-website
+  repo: sarahvenable630-blip/swsa-website
   branch: main
   # Authentication must be configured for the chosen backend before the editor is live.
 
 media_folder: "assets/uploads"
 public_folder: "/assets/uploads"
-site_url: "https://YOUR-SITE-NAME.netlify.app"
-display_url: "https://YOUR-SITE-NAME.netlify.app"
+site_url: "https://swsa-website.netlify.app"
+display_url: "https://swsa-website.netlify.app"
 show_preview_links: true
 
 collections:
