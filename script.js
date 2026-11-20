@@ -43,8 +43,9 @@ function renderLeaders(people) {
 function escapeHTML(value) { return String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
 (async function init(){
   const site = {...fallback, ...(await loadJSON('/content/site.json', {}))};
-  setText('announcementText', site.announcement); setText('heroEyebrow', site.hero_eyebrow); setText('missionTitle', site.mission_title); setText('missionStatement', site.mission_statement); setText('missionTagline', site.tagline); setText('heroIntro', site.hero_intro); setText('aboutText', site.about_text); setText('aboutExtra', site.about_extra); setText('joinText', site.join_text); setText('contactText', site.contact_text);
+  setText('announcementText', site.announcement); setText('heroEyebrow', site.hero_eyebrow); setText('missionStatement', site.mission_statement); setText('missionTagline', site.tagline); setText('heroIntro', site.hero_intro); setText('aboutText', site.about_text); setText('aboutExtra', site.about_extra); setText('joinText', site.join_text); setText('contactText', site.contact_text);
   if (site.hero_title) document.getElementById('heroTitle').innerHTML = escapeHTML(site.hero_title).replace('Make an impact.','<span>Make an impact.</span>').replace('\n','<br>');
+  if (site.mission_title) document.getElementById('missionTitle').innerHTML = escapeHTML(site.mission_title).replace(/\s*Our action\./,'<br><span>Our action.</span>').replace('\n','<br>');
   if (site.about_title) document.getElementById('aboutTitle').innerHTML = escapeHTML(site.about_title).replace('A community.','<span>A community.</span>').replace('\n','<br>');
   if (site.contact_email) { setText('contactEmail', site.contact_email); document.getElementById('contactLink').href = 'mailto:'+site.contact_email; }
   if (site.contact_url) { document.getElementById('contactLink').href = safeLink(site.contact_url); }
