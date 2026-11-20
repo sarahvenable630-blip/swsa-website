@@ -1,0 +1,94 @@
+# CMS configuration starter. Replace YOUR-GITHUB-USERNAME with the GitHub owner
+# after the project repository is created. Use a supported Decap backend/auth setup.
+backend:
+  name: github
+  repo: YOUR-GITHUB-USERNAME/swsa-website
+  branch: main
+  # Authentication must be configured for the chosen backend before the editor is live.
+
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
+site_url: "https://YOUR-SITE-NAME.netlify.app"
+display_url: "https://YOUR-SITE-NAME.netlify.app"
+show_preview_links: true
+
+collections:
+  - name: "site_settings"
+    label: "Website & Home Page"
+    files:
+      - name: "home"
+        label: "Home Page Content"
+        file: "content/site.json"
+        format: "json"
+        fields:
+          - { label: "Announcement bar", name: "announcement", widget: "string" }
+          - { label: "Institution", name: "institution", widget: "string" }
+          - { label: "Hero eyebrow", name: "hero_eyebrow", widget: "string" }
+          - { label: "Main headline", name: "hero_title", widget: "string" }
+          - { label: "Introduction", name: "hero_intro", widget: "text" }
+          - { label: "Mission heading", name: "mission_title", widget: "string" }
+          - { label: "Mission statement", name: "mission_statement", widget: "text" }
+          - { label: "Mission tagline", name: "tagline", widget: "string" }
+          - { label: "About heading", name: "about_title", widget: "string" }
+          - { label: "About the club", name: "about_text", widget: "text" }
+          - { label: "Additional about text", name: "about_extra", widget: "text" }
+          - { label: "Get involved text", name: "join_text", widget: "text" }
+          - { label: "Join/contact form URL", name: "join_url", widget: "string", required: false }
+          - { label: "Contact introduction", name: "contact_text", widget: "text" }
+          - { label: "Club email", name: "contact_email", widget: "string", required: false }
+          - { label: "Contact URL", name: "contact_url", widget: "string", required: false }
+  - name: "events"
+    label: "Events"
+    files:
+      - name: "event_list"
+        label: "Manage Events"
+        file: "content/events.json"
+        format: "json"
+        fields:
+          - label: "Events"
+            name: "events"
+            widget: "list"
+            fields:
+              - { label: "Event title", name: "title", widget: "string" }
+              - { label: "Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false }
+              - { label: "Time", name: "time", widget: "string", required: false }
+              - { label: "Location", name: "location", widget: "string", required: false }
+              - { label: "Category", name: "category", widget: "string", default: "CLUB EVENT" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Details / RSVP link", name: "link", widget: "string", required: false }
+              - { label: "Published", name: "published", widget: "boolean", default: true }
+  - name: "documents"
+    label: "Club Documents"
+    files:
+      - name: "document_list"
+        label: "Manage Documents"
+        file: "content/documents.json"
+        format: "json"
+        fields:
+          - label: "Documents"
+            name: "documents"
+            widget: "list"
+            fields:
+              - { label: "Document title", name: "title", widget: "string" }
+              - { label: "Type / category", name: "type", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Upload file", name: "file", widget: "file", required: false }
+              - { label: "External URL", name: "url", widget: "string", required: false }
+              - { label: "Published", name: "published", widget: "boolean", default: true }
+  - name: "leadership"
+    label: "Club Leadership"
+    files:
+      - name: "leader_list"
+        label: "Manage Officers"
+        file: "content/leaders.json"
+        format: "json"
+        fields:
+          - label: "Officers"
+            name: "leaders"
+            widget: "list"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Position", name: "role", widget: "string" }
+              - { label: "Photo", name: "photo", widget: "image", required: false }
+              - { label: "Email", name: "email", widget: "string", required: false }
+              - { label: "Published", name: "published", widget: "boolean", default: true }
